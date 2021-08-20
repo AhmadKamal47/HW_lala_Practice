@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">HW lala Practice</string>
+    <string name="Btn1">Button 1</string>
+    <string name="Btn3">Button 3</string>
+    <string name="Btn2">Button 2</string>
+    <string name="tv_act2">Activity 2</string>
+    <string name="tv_act3">Activity 3</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Home_ragment">Home Fragment</string>
+    <string name="second_fragment">Second Fragment</string>
+</resources>
