@@ -1,11 +1,7 @@
-package com.example.hwlalapractice;
+package com.example.hwlalapractice.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
 import android.view.View;
 
-import com.example.hwlalapractice.databinding.ActivityMain2Binding;
 import com.example.hwlalapractice.databinding.ActivityMain3Binding;
 
 public class MainActivity3 extends BaseActivity<ActivityMain3Binding> {

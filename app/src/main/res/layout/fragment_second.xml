@@ -1,17 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SecondFragment">
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".fragments.SecondFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:id="@+id/tv_second_frag"
         android:textStyle="bold"
         android:textSize="20dp"
         android:text="@string/second_fragment" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/tv_second_frag_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:text="@string/name"/>
+    <TextView
+        android:id="@+id/tv_second_frag_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:text="@string/emial"/>
+    <TextView
+        android:id="@+id/tv_second_frag_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:text="@string/id"/>
+
+
+
+</LinearLayout>

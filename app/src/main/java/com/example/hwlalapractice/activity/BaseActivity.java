@@ -1,4 +1,4 @@
-package com.example.hwlalapractice;
+package com.example.hwlalapractice.activity;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -9,12 +9,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import java.util.ArrayList;
+import java.util.Set;
+
 public abstract class BaseActivity<VB> extends AppCompatActivity {
     protected String TAG;
-    protected FragmentManager fm;
-    protected FragmentTransaction ft;
-    protected HomeFragment homeFragment;
-    protected SecondFragment secondFragment;
+    protected ArrayList<String> list;
+    protected Set<String> set;
     protected VB binding;
 
     @Override

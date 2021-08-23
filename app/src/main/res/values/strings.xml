@@ -9,4 +9,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Home_ragment">Home Fragment</string>
     <string name="second_fragment">Second Fragment</string>
+    <string name="name">Name</string>
+    <string name="emial">Email</string>
+    <string name="id">ID</string>
+    <string name="login">Login</string>
+    <string name="pwd">Password</string>
 </resources>

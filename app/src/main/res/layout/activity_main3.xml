@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".MainActivity3">
+    tools:context=".activity.MainActivity3">
 
     <TextView
         android:id="@+id/tv_act3"
