@@ -12,7 +12,7 @@
         android:gravity="center"
         android:orientation="vertical"
         android:padding="20dp"
-        tools:context=".fragments.HomeFragment">
+        tools:context=".mvvm.view.fragments.HomeFragment">
 
         <!-- TODO: Update blank fragment layout -->
         <TextView

@@ -1,4 +1,4 @@
-package com.example.hwlalapractice.fragments;
+package com.example.hwlalapractice.mvvm.view.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -6,26 +6,30 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.hwlalapractice.R;
-import com.example.hwlalapractice.databinding.FragmentSecondBinding;
-import com.example.hwlalapractice.model.Profile;
+import com.example.hwlalapractice.databinding.FragmentHomeBinding;
+import com.example.hwlalapractice.mvvm.repository.model.Profile;
 import com.example.hwlalapractice.utils.Constants;
 
-import java.util.ArrayList;
 
-public class SecondFragment extends Fragment {
-
-    private FragmentSecondBinding binding;
-    private static final String TAG = "SECOND";
+public class HomeFragment extends Fragment {
+    public FragmentHomeBinding homeBinding;
 //    ArrayList<String> list;
+private static final String TAG = "HOME";
+    NavController navController;
 
-    public SecondFragment() {
+
+
+    public HomeFragment() {
         // Required empty public constructor
     }
 
@@ -44,39 +48,43 @@ public class SecondFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = FragmentSecondBinding.inflate(inflater, container, false);
-        return binding.getRoot();
+        homeBinding = FragmentHomeBinding.inflate(inflater, container, false);
+        return homeBinding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Log.d(TAG, "onViewCreated: ");
 //        list = new ArrayList<>();
+        navController = Navigation.findNavController(view);
 
-        if(getArguments() != null)
-        {
-            Profile profile = getArguments().getParcelable(Constants.KEY);
-            if(profile != null)
-            {
-                profile.getId();
+        homeBinding.btn3.setOnClickListener(view1 -> {
+            String id = homeBinding.etHomeFragId.getText().toString().trim();
+            String name = homeBinding.etHomeFragName.getText().toString().trim();
+            String email = homeBinding.etHomeFragEmail.getText().toString().trim();
+
+            if(TextUtils.isEmpty(name)){
+                homeBinding.etHomeFragName.setError("Name required!");
+                return;
             }
-//            list = getArguments().getStringArrayList("KEY");
-//            if(!list.isEmpty())
-//            {
-//                populate(list);
-//            }
-        }
+
+            if(TextUtils.isEmpty(email)){
+                homeBinding.etHomeFragEmail.setError("Email required!");
+                return;
+            }
+
+//            list.add(id);
+//            list.add(name);
+//            list.add(email);
+            Bundle bundle = new Bundle();
+            bundle.putParcelable(Constants.KEY, new Profile(name, id, email));
+//            bundle.putStringArrayList("KEY", list);
+
+            navController.navigate(R.id.secondFragment, bundle);
+        });
     }
-
-
-
-//    private void populate(ArrayList<String> list) {
-//        binding.tvSecondFragId.setText(list.get(0));
-//        binding.tvSecondFragName.setText(list.get(1));
-//        binding.tvSecondFragEmail.setText(list.get(2));
-//    }
-
     @Override
     public void onStart() {
         super.onStart();

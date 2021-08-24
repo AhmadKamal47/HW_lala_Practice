@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.SplashActivity">
+    tools:context=".mvvm.view.activity.SplashActivity">
 
     <ImageView
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:indeterminate="true"
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        style="@style/Widget.AppCompat.ProgressBar"
         android:layout_gravity="center"
         android:id="@+id/progress_bar"
         android:indeterminateTint="@color/black"/>

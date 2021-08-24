@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".fragments.SecondFragment">
+    tools:context=".mvvm.view.fragments.SecondFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

@@ -1,4 +1,4 @@
-package com.example.hwlalapractice.activity;
+package com.example.hwlalapractice.mvvm.view.activity;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -6,16 +6,12 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
-import java.util.ArrayList;
-import java.util.Set;
+import com.example.hwlalapractice.manager.PrefManager;
 
 public abstract class BaseActivity<VB> extends AppCompatActivity {
     protected String TAG;
-    protected ArrayList<String> list;
-    protected Set<String> set;
+    protected PrefManager prefManager;
     protected VB binding;
 
     @Override

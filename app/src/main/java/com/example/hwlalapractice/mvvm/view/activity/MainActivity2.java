@@ -1,4 +1,4 @@
-package com.example.hwlalapractice.activity;
+package com.example.hwlalapractice.mvvm.view.activity;
 
 import android.content.Intent;
 import android.view.View;
