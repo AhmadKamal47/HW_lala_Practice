@@ -5,10 +5,18 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.example.hwlalapractice.databinding.ActivitySplashBinding;
 import com.example.hwlalapractice.manager.PrefManager;
+import com.example.hwlalapractice.mvvm.viewmodel.LoginViewModel;
 
 public class SplashActivity extends BaseActivity<ActivitySplashBinding> {
+
+    private LoginViewModel loginViewModel;
+    private final Handler handler = new Handler();
 
     @Override
     protected View initRoot() {
@@ -23,44 +31,19 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding> {
     @Override
     protected void init() {
         TAG = "LOGD";
-        prefManager = new PrefManager();
+        loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+        loginViewModel.getIsSessionExpiredLiveData().observe(this, isExpired -> {
+            handler
+                    .postDelayed(() -> {
+                        Class<?> toScreen = MainActivity.class;
+                        if (!isExpired) {
+                            toScreen = MainActivity2.class;
+                        }
+                        startActivity(new Intent(SplashActivity.this, toScreen));
+                        finish();
+                    }, 3000);
+        });
     }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        new Handler().postDelayed(() -> {
-
-            String email = prefManager.getString("email");
-            String pwd = prefManager.getString("pwd");
-            String timeMilli = prefManager.getString("time", "0");
-
-
-            long currentTimeMilli = System.currentTimeMillis();
-            long timeDifference = currentTimeMilli - Long.parseLong(timeMilli);
-
-            if(TextUtils.equals(email, "kamal") && TextUtils.equals(pwd, "12345"))
-            {
-                if(timeDifference < 30000f)
-                {
-                    startActivity(new Intent(SplashActivity.this, MainActivity2.class));
-                    finish();
-                }
-                else {
-                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
-                    finish();
-                }
-
-            }
-            else
-            {
-                startActivity(new Intent(SplashActivity.this, MainActivity.class));
-                finish();
-            }
-        }, 3000);
-    }
-
-
 
     @Override
     protected void clicks() {
