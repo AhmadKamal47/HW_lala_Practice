@@ -10,8 +10,12 @@
     <string name="Home_ragment">Home Fragment</string>
     <string name="second_fragment">Second Fragment</string>
     <string name="name">Name</string>
-    <string name="emial">Email</string>
+    <string name="email">Email</string>
     <string name="id">ID</string>
     <string name="login">Login</string>
     <string name="pwd">Password</string>
+    <string name="ipsum">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,</string>
+    <string name="zero">0</string>
+    <string name="refresh_list">Refresh Chats</string>
+    <string name="todoApp">Todo App</string>
 </resources>

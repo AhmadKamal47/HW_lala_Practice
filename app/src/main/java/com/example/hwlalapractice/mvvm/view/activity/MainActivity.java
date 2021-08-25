@@ -1,63 +1,61 @@
 package com.example.hwlalapractice.mvvm.view.activity;
 
-import androidx.annotation.RequiresApi;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
-import android.os.Build;
-import android.text.TextUtils;
+import android.os.Bundle;
 import android.view.View;
 
-import com.example.hwlalapractice.R;
+import com.example.hwlalapractice.apps.todo.mvvm.view.activity.TodoMainActivity;
 import com.example.hwlalapractice.databinding.ActivityMainBinding;
-import com.example.hwlalapractice.manager.PrefManager;
+import com.example.hwlalapractice.mvvm.repository.model.Chat;
+import com.example.hwlalapractice.mvvm.view.adapter.ChatAdapter;
+import com.example.hwlalapractice.mvvm.viewmodel.ChatViewModel;
 
-public class MainActivity extends BaseActivity<ActivityMainBinding>  {
+import java.util.List;
+import java.util.Random;
 
+public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
-   private NavController navController;
-
+    private ChatViewModel mChatViewModel;
 
     @Override
-    protected ActivityMainBinding initBindingRef() {
+    public ActivityMainBinding initBindingRef() {
         return ActivityMainBinding.inflate(getLayoutInflater());
     }
 
     @Override
     protected View initRoot() {
-        return binding.getRoot();
+        return mBinding.getRoot();
     }
 
     @Override
-    protected void init() {
-        TAG = "Activity_Main";
-        prefManager = new PrefManager();
-        navController = Navigation.findNavController(this, R.id.fragmentContainerView);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    @Override
-    protected void clicks()
+    protected void initRef()
     {
-        binding.btn1.setOnClickListener(view -> navController.navigate(R.id.secondFragment));
+        mChatViewModel = new ViewModelProvider(this).get(ChatViewModel.class);
+        observeChatList();
+        clicks();
+    }
 
-        binding.login.setOnClickListener(view ->
-        {
-            String email = binding.etEmail.getText().toString().trim();
-            String pwd = binding.etPwd.getText().toString().trim();
+    @Override
+    protected void clicks() {
+        mBinding.refreshChatsBtn.setOnClickListener(view -> mChatViewModel.getChatList(new Random().nextInt(100)));
+        mBinding.todoAppBtn.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, TodoMainActivity.class)));
+    }
 
-            if(TextUtils.equals(email,"kamal") && TextUtils.equals(pwd, "12345"))
-            {
-                prefManager.saveString("email", email);
-                prefManager.saveString("pwd", pwd);
-
-                prefManager.saveString("time", String.valueOf(System.currentTimeMillis()));
-
-                startActivity(new Intent(MainActivity.this, MainActivity2.class));
-                finish();
-            }
+    private void observeChatList() {
+        mChatViewModel.getChatListLiveData().observe(this, chats -> {
+            if (chats != null && chats.size() > 0)
+                setUpRecyclerView(chats);
         });
     }
 
+    private void setUpRecyclerView(List<Chat> list) {
+        ChatAdapter adapter = new ChatAdapter(this, list);
+        mBinding.recyclerView.setAdapter(adapter);
+        mBinding.recyclerView.setHasFixedSize(true);
+    }
 }

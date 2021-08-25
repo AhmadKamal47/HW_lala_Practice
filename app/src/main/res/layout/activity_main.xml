@@ -5,50 +5,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:padding="20dp"
+    android:padding="@dimen/_16sdp"
     android:orientation="vertical"
     tools:context=".mvvm.view.activity.MainActivity">
 
-
-    <EditText
-        android:id="@+id/et_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/emial"/>
-
-    <EditText
-        android:id="@+id/et_pwd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/pwd"/>
-
     <Button
-        android:id="@+id/login"
+        android:id="@+id/refresh_chats_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/login"/>
-
-    <fragment
-        android:id="@+id/fragmentContainerView"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/home_nav_graph" />
+        android:text="@string/refresh_list"
+        android:textSize="@dimen/_12ssp"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center|left"
-        android:id="@+id/btn1"
-        android:text="@string/Btn1"/>
+        android:text="@string/todoApp"
+        android:id="@+id/todo_app_btn"/>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_nav_view"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:menu="@menu/main_bottom_menu"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:listitem="@layout/item_chat"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 </LinearLayout>

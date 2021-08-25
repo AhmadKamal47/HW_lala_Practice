@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/_15sdp"
+    tools:context=".apps.todo.mvvm.view.activity.TodoMainActivity">
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/EditTextStyle"
+        app:boxBackgroundMode="outline"
+        android:layout_marginTop="@dimen/_8sdp"
+        app:endIconMode="clear_text">
+        <com.google.android.material.textfield.TextInputEditText
+            style="@style/EditTextStyle"
+            android:hint="@string/email"
+            android:id="@+id/et_email_todo"
+            android:inputType="textEmailAddress"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/EditTextStyle"
+        android:layout_marginTop="@dimen/_8sdp"
+        app:passwordToggleEnabled="true">
+        <com.google.android.material.textfield.TextInputEditText
+            style="@style/EditTextStyle"
+            android:hint="@string/pwd"
+            android:id="@+id/et_pwd_todo"
+            android:inputType="textPassword"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:id="@+id/login_btn_todo"
+        android:text="@string/login"/>
+
+
+</LinearLayout>
