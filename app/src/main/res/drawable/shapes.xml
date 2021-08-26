@@ -4,7 +4,8 @@
     android:shape="rectangle"
     android:padding = "@dimen/_10sdp">
 
-    <stroke android:width="@dimen/_1sdp"
+    <stroke
+        android:width="@dimen/_1sdp"
         android:color="@color/silver" />
     <corners
         android:radius="@dimen/_30sdp" />

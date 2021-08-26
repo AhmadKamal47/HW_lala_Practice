@@ -24,6 +24,7 @@
     <com.google.android.material.textfield.TextInputLayout
         style="@style/EditTextStyle"
         android:layout_marginTop="@dimen/_8sdp"
+        app:boxBackgroundMode="outline"
         app:passwordToggleEnabled="true">
         <com.google.android.material.textfield.TextInputEditText
             style="@style/EditTextStyle"
@@ -33,11 +34,30 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="@dimen/_8sdp"
         android:id="@+id/login_btn_todo"
         android:text="@string/login"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/black"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_role_todo"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_200sdp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        tools:listitem="@layout/item_drawable_roles"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/black"/>
 
 
 </LinearLayout>

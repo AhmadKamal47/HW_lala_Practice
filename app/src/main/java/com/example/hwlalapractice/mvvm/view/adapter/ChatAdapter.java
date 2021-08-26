@@ -39,19 +39,9 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
         mItemBinding.msgTv.setText(chat.getLastMessage());
         mItemBinding.totalMsgTv.setText(String.valueOf(chat.getTotalMessages()));
 
-        mItemBinding.profileIv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        mItemBinding.profileIv.setOnClickListener(view -> { });
 
-            }
-        });
-
-        mItemBinding.getRoot().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
+        mItemBinding.getRoot().setOnClickListener(view -> { });
     }
 
     @Override

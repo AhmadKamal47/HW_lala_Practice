@@ -46,7 +46,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         mBinding.todoAppBtn.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, TodoMainActivity.class)));
     }
 
-    private void observeChatList() {
+    private void observeChatList()
+    {
         mChatViewModel.getChatListLiveData().observe(this, chats -> {
             if (chats != null && chats.size() > 0)
                 setUpRecyclerView(chats);

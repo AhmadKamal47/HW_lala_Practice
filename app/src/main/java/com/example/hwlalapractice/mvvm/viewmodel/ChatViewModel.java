@@ -21,6 +21,7 @@ public class ChatViewModel extends ViewModel {
         return mChatListLiveData;
     }
 
+
     public void getChatList(int max) {
         List<Chat> list = new ArrayList<>();
 
