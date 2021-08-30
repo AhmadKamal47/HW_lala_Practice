@@ -6,4 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".apps.todo.mvvm.view.activity.TodoHomeActivity">
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_name_todo_home"
+        android:hint="@string/name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_address_todo_home"
+        android:hint="@string/address"
+        app:layout_constraintStart_toStartOf="et_name_todo_home"
+        app:layout_constraintTop_toBottomOf="@id/et_name_todo_home"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_cnic_todo_home"
+        android:hint="@string/cnic"
+        app:layout_constraintStart_toStartOf="@id/et_address_todo_home"
+        app:layout_constraintTop_toBottomOf="@id/et_address_todo_home"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_btn_todo_home"
+        android:text="@string/add"
+        app:layout_constraintTop_toBottomOf="@id/et_cnic_todo_home"
+        app:layout_constraintStart_toStartOf="@id/et_cnic_todo_home"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rv_user_info_todo_home"
+        tools:listitem="@layout/item_chat"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/add_btn_todo_home"
+        app:layout_constraintStart_toStartOf="@id/add_btn_todo_home"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

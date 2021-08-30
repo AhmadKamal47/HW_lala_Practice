@@ -41,23 +41,15 @@
         android:id="@+id/login_btn_todo"
         android:text="@string/login"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_1sdp"
-        android:background="@color/black"/>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_role_todo"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_200sdp"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:spanCount="2"
         tools:listitem="@layout/item_drawable_roles"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_1sdp"
-        android:background="@color/black"/>
 
 
 </LinearLayout>

@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -42,27 +44,7 @@ public class LoginCredentialsAdapter extends RecyclerView.Adapter<LoginCredentia
 
     @Override
     public void onBindViewHolder(@NonNull LoginCredentialsAdapter.MyViewHolder holder, int position) {
-        binding.roleTv.setText(list.get(position).getName());
-        binding.rvIv.setImageResource(list.get(position).getIcon());
 
-        list.get(position).setSelected(true);
-
-        binding.getRoot().setOnClickListener(view -> {
-            UserRole role = list.get(position);
-            if(role.isSelected())
-            {
-                holder.itemView.setBackgroundColor(Color.YELLOW);
-                role.setSelected(false);
-            }
-            else if(!role.isSelected())
-            {
-                holder.itemView.setBackgroundColor(Color.WHITE);
-                role.setSelected(true);
-            }
-            Log.d("TAG", "ItemSelected: " + position + " " + role.getName() );
-//            binding.getRoot().setBackgroundColor(role.isSelected()? Color.YELLOW: Color.WHITE);
-
-        });
     }
     @Override
     public int getItemCount() {

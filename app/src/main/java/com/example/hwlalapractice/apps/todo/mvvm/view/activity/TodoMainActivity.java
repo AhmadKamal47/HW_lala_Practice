@@ -1,10 +1,12 @@
 package com.example.hwlalapractice.apps.todo.mvvm.view.activity;
 
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -16,16 +18,16 @@ import com.example.hwlalapractice.apps.todo.mvvm.view.adapter.LoginCredentialsAd
 import com.example.hwlalapractice.apps.todo.mvvm.viewmodel.LoginViewModel;
 import com.example.hwlalapractice.databinding.ActivityTodoMainBinding;
 import com.example.hwlalapractice.mvvm.view.activity.BaseActivity;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 
-public class TodoMainActivity extends BaseActivity<ActivityTodoMainBinding> {
+public class TodoMainActivity extends BaseActivity<ActivityTodoMainBinding>{
 
-
-    private LoginViewModel viewModel;
     private LoginCredentialsAdapter adapter;
+    private LoginViewModel viewModel;
 
     @Override
     protected ActivityTodoMainBinding initBindingRef() {
@@ -43,23 +45,25 @@ public class TodoMainActivity extends BaseActivity<ActivityTodoMainBinding> {
     {
         viewModel = new ViewModelProvider(this).get(LoginViewModel.class); //getting view model object
         viewModel.saveUserRoleListToLiveData(getUserRoleList()); //save userrole list to live data in view model
-        observeUserRoleLiveData(); //observing live data for stored userroles.
-
+        observeUserRoleLiveDataList(); //observing live data for stored userroles.
     }
 
-    private void observeUserRoleLiveData() {
-        viewModel.getUserRoleMutableLiveData().observe(this, userRoles -> {
-            if (userRoles != null)
-            {
-                setUpRecyclerView(userRoles);
+    private void observeUserRoleLiveDataList() {
+        viewModel.getUserRoleMutableLiveDataList().observe(this, new Observer<List<UserRole>>() {
+            @Override
+            public void onChanged(List<UserRole> list) {
+                if (list != null)
+                {
+                    setUpRecyclerView(list);
+                }
             }
         });
     }
-
     private List<UserRole> getUserRoleList() {
         List<UserRole> temp = new ArrayList<>();
 
         int tempDrawable = R.drawable.ic_outline_cancel_presentation_24;
+
         temp.add(new UserRole(tempDrawable, "Employee", false));
         temp.add(new UserRole(tempDrawable, "Manager", false));
         temp.add(new UserRole(tempDrawable, "Office Boy", false));
@@ -103,6 +107,6 @@ public class TodoMainActivity extends BaseActivity<ActivityTodoMainBinding> {
         }
         else
             return true;
-
     }
+
 }
