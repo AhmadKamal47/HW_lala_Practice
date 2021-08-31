@@ -12,7 +12,7 @@ public class PrefManager {
     private SharedPreferences sharedPreferences;
 
     public PrefManager() {
-        sharedPreferences = MyApp.getAppContext().getSharedPreferences("name", MODE_PRIVATE);
+        sharedPreferences = MyApp.getInstance().getAppContext().getSharedPreferences("name", MODE_PRIVATE);
     }
 
     public void saveString(String key, String value){

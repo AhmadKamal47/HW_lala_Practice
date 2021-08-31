@@ -4,12 +4,11 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.hwlalapractice.apps.todo.mvvm.repository.model.User;
+import com.example.hwlalapractice.apps.todo.mvvm.repository.db.roomDB.entity.User;
 import com.example.hwlalapractice.databinding.ItemChatBinding;
 
 import java.util.List;
@@ -31,9 +30,19 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         itemChatBinding = ItemChatBinding.inflate(LayoutInflater.from(context), parent, false );
         return new UserViewHolder(itemChatBinding.getRoot());
     }
-
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
+
+        String name = list.get(position).getName();
+        String address = list.get(position).getAddress();
+        String cnic = list.get(position).getCnic();
+        long id = list.get(position).getId();
+
+
+        itemChatBinding.totalMsgTv.setText(String.valueOf(id));
+        itemChatBinding.nameTv.setText(name);
+        itemChatBinding.msgTv.setText(address);
+        itemChatBinding.cnic.setText(cnic);
 
     }
 
@@ -42,10 +51,15 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         return list.size();
     }
 
-    public static class UserViewHolder extends RecyclerView.ViewHolder{
+    public void setList(List<User> userList) {
+        list = userList;
+        notifyDataSetChanged();
+    }
 
+    public static class UserViewHolder extends RecyclerView.ViewHolder{
         public UserViewHolder(@NonNull View itemView) {
             super(itemView);
+
         }
     }
 }
