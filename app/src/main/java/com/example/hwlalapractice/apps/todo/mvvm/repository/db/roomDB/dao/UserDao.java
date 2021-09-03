@@ -7,6 +7,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.example.hwlalapractice.apps.todo.mvvm.repository.db.roomDB.entity.CNIC;
 import com.example.hwlalapractice.apps.todo.mvvm.repository.db.roomDB.entity.User;
 
 import java.util.List;
@@ -29,4 +30,8 @@ public interface UserDao {
 
     @Query("select * from users")
     List<User> getAllUser();
+
+
+    @Query("select * from users where id = :id")
+    User selectWithCNIC(long id);
 }

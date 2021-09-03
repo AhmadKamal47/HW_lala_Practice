@@ -9,21 +9,21 @@ public class User {
 
     @PrimaryKey(autoGenerate = true)
 //    @ColumnInfo(name = "id")
-    long id;
+    private long id;
 
 //    @ColumnInfo(name = "name")
-    String name;
+    private String name;
 
 //    @ColumnInfo(name = "address")
-    String address;
+    private String address;
 
 //    @ColumnInfo(name = "cnic_id")
-    String cnic;
+    private long cnic_id;
 
-    public User(String name, String address, String cnic) {
+    public User(String name, String address, long cnic_id) {
         this.name = name;
         this.address = address;
-        this.cnic = cnic;
+        this.cnic_id = cnic_id;
     }
 
     public long getId() {
@@ -50,11 +50,11 @@ public class User {
         this.address = address;
     }
 
-    public String getCnic() {
-        return cnic;
+    public long getCnic_id() {
+        return cnic_id;
     }
 
-    public void setCnic(String cnic) {
-        this.cnic = cnic;
+    public void setCnic_id(long cnic_id) {
+        this.cnic_id = cnic_id;
     }
 }

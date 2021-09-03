@@ -22,8 +22,7 @@ public abstract class BaseActivity<VB> extends AppCompatActivity {
         setContentView(initRoot());
         initRef();
         clicks();
-
-
+        
     }
 
     protected abstract View initRoot();

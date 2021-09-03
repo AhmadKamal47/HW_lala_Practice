@@ -20,6 +20,16 @@
         android:layout_height="wrap_content"
         android:text="@string/todoApp"
         android:id="@+id/todo_app_btn"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/testing_db_btn"
+        android:id="@+id/testing_db_btn"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/testing_api_btn"
+            android:id="@+id/testing_api_btn"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"

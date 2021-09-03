@@ -1,14 +1,12 @@
 package com.example.hwlalapractice.mvvm.view.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 
+import androidx.lifecycle.ViewModelProvider;
+
+import com.example.hwlalapractice.apps.TestingAPIs.view.activity.MainActivityTestingApi;
+import com.example.hwlalapractice.apps.TestingDB.mvvm.view.activity.MainTestingDatabaseActivity;
 import com.example.hwlalapractice.apps.todo.mvvm.view.activity.TodoMainActivity;
 import com.example.hwlalapractice.databinding.ActivityMainBinding;
 import com.example.hwlalapractice.mvvm.repository.model.Chat;
@@ -44,6 +42,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     protected void clicks() {
         mBinding.refreshChatsBtn.setOnClickListener(view -> mChatViewModel.getChatList(new Random().nextInt(100)));
         mBinding.todoAppBtn.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, TodoMainActivity.class)));
+        mBinding.testingDbBtn.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, MainTestingDatabaseActivity.class)));
+        mBinding.testingApiBtn.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, MainActivityTestingApi.class)));
     }
 
     private void observeChatList()

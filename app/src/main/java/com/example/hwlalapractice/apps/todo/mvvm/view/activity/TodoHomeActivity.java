@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.hwlalapractice.apps.todo.mvvm.repository.db.roomDB.entity.User;
+import com.example.hwlalapractice.apps.todo.mvvm.repository.model.UserWithCNIC;
 import com.example.hwlalapractice.apps.todo.mvvm.view.adapter.UserAdapter;
 import com.example.hwlalapractice.apps.todo.mvvm.viewmodel.UserViewModel;
 import com.example.hwlalapractice.databinding.ActivityTodoHomeBinding;
@@ -22,7 +23,7 @@ public class TodoHomeActivity extends BaseActivity<ActivityTodoHomeBinding> {
 
     private UserViewModel viewModel;
     private UserAdapter adapter;
-    private List<User> list;
+    private List<UserWithCNIC> list;
 
     @Override
     protected ActivityTodoHomeBinding initBindingRef() {
@@ -30,7 +31,8 @@ public class TodoHomeActivity extends BaseActivity<ActivityTodoHomeBinding> {
     }
 
     @Override
-    protected View initRoot() {
+    protected View initRoot()
+    {
         return mBinding.getRoot();
     }
 
@@ -38,23 +40,27 @@ public class TodoHomeActivity extends BaseActivity<ActivityTodoHomeBinding> {
     protected void initRef()
     {
         viewModel = new ViewModelProvider(this).get(UserViewModel.class);
+        viewModel.fetchData();
+        adapter = new UserAdapter(this);
         list = new ArrayList<>();
         setRecyclerViewList(list);
         observeLiveData();
-
     }
 
 
     private void observeLiveData() {
-        viewModel.getListMutableLiveData().observe(this, users -> {
-            list.clear();
-            list.addAll(users);
-            adapter.notifyDataSetChanged();
+        viewModel.getListMutableLiveData().observe(this, new Observer<List<UserWithCNIC>>() {
+            @Override
+            public void onChanged(List<UserWithCNIC> users) {
+                list.clear();
+                list.addAll(users);
+            }
         });
+
     }
 
-    private void setRecyclerViewList(List<User> userList) {
-        adapter = new UserAdapter(this, userList);
+    private void setRecyclerViewList(List<UserWithCNIC> userList) {
+        adapter.setList(list);
         mBinding.rvUserInfoTodoHome.setAdapter(adapter);
     }
 
@@ -78,7 +84,7 @@ public class TodoHomeActivity extends BaseActivity<ActivityTodoHomeBinding> {
                 mBinding.etCnicTodoHome.setError("Required Field...");
                 return;
             }
-            viewModel.saveData(new User(name, address, cnic));
+            viewModel.saveData(new User(name, address, Long.parseLong(cnic)));
 
         });
     }

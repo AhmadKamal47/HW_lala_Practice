@@ -59,6 +59,7 @@ public class TodoMainActivity extends BaseActivity<ActivityTodoMainBinding>{
             }
         });
     }
+
     private List<UserRole> getUserRoleList() {
         List<UserRole> temp = new ArrayList<>();
 
