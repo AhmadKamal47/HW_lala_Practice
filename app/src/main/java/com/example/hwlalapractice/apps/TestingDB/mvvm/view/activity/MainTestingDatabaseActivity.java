@@ -66,7 +66,8 @@ public class MainTestingDatabaseActivity extends BaseActivity<ActivityMainTestin
     }
 
     @Override
-    protected void initRef() {
+    protected void initRef()
+    {
         List<StudentWithAddress> list = new ArrayList<>();
         studentAdapter = new StudentAdapter(this);
         testingDBViewModel = new ViewModelProvider(this).get(StudentViewModelTestingDB.class);

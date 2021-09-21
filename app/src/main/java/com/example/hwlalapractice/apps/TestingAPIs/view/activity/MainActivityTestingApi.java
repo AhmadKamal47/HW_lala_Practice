@@ -59,7 +59,6 @@ public class MainActivityTestingApi extends BaseActivity<ActivityMainTestingApiB
         list.clear();
         list.addAll(posts);
         postAdapter.notifyDataSetChanged();
-
         mBinding.tvTotalPosts.setText("total posts found: " + posts.size());
     }
 
